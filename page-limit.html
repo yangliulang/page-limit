@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>滑动分页插件</title>
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" name="viewport">
+<style>
+    body{
+        padding-bottom: 40px;
+    }
+    #pages{
+        height: 1500px;
+        background-color:red;
+    }
+    .page-limit{
+        text-align: center;
+        height: 35px;
+        line-height: 35px;
+    }
+
+</style>
+</head>
+<body>
+    <div id="pages">
+        
+    </div>
+    <div id="js-page-limit" class="page-limit" data-page-total='10' data-current-index='2'>
+        正在加载更多...
+    </div>
+    <script src="zepto.1.1.4.js"></script>
+    <script src="page-limit.js"></script>
+    <script>
+        var pageLimit = new PageLimit({
+                elem:$('#js-page-limit'),
+                loadType:'scroll',
+                loadStepText:['获取更多','正在加载..','没有更多数据'],
+                url:'data/test.json',
+                callback:function(ret){
+                    console.log(ret)
+                },
+                params:{
+                    type:'home',
+                    limit:20
+                }
+        });
+    </script>
+</body>
+</html>
